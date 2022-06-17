@@ -22,7 +22,8 @@
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "express": "^4.17.1",
-    "http-proxy-middleware": "^1.0.4"
+    "http-proxy-middleware": "^1.0.4",
+    "mongoose": "^6.3.8"
   },
   "devDependencies": {
     "del": "^5.1.0",

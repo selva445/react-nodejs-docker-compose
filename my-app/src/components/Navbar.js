@@ -4,7 +4,14 @@ import CryptoJS from "crypto-js";
 import axios from "axios";
 
 export function Navbarcomponent() {
+  const backend = "http://localhost:3080";
   const [links, setLinks] = useState([]);
+
+  const userDetails = {
+    name: "John Smith",
+    role: "DPMT_Read",
+    authenticated: "true",
+  };
 
   useEffect(() => {
     const userDetails = {
@@ -20,7 +27,7 @@ export function Navbarcomponent() {
 
     console.log("encryptedval", ciphertext);
     axios
-      .post("http://localhost:3080/apps", {
+      .post(`${backend}/apps`, {
         ciphertext,
       })
       .then((res) => {
@@ -32,10 +39,20 @@ export function Navbarcomponent() {
   }, []);
 
   const contextHandover = (host) => (e) => {
-  
     const uid = uuidv4();
-    const microAppPath = `${host}/contextRef/${uid}`;
-    window.open(microAppPath, "_blank").focus();
+    axios
+      .post(`${backend}/createContext`, {
+        id: uid,
+        apps: [links],
+        user: userDetails,
+      })
+      .then((res) => {
+        const microAppPath = `${host}/contextRef/${uid}`;
+        window.open(microAppPath, "_blank").focus();
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
   };
   return (
     <>
