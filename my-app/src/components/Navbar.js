@@ -43,7 +43,7 @@ export function Navbarcomponent() {
     axios
       .post(`${backend}/createContext`, {
         id: uid,
-        apps: [links],
+        apps: links,
         user: userDetails,
       })
       .then((res) => {

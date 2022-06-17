@@ -116,3 +116,18 @@ ul{
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   font-size: larger;
 }
+
+.hero-image {
+  background-image: url(https://cdn.cdnlogo.com/logos/c/15/commonwealth-bank.svg);
+  /* The image used */
+  background-color: wheat;
+  /* Used if the image is unavailable */
+  height: 100vh;
+  /* You must set a specified height */
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover;
+  /* Resize the background image to cover the entire container */
+}
