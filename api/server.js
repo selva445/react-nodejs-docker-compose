@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const app = express(),
   bodyParser = require("body-parser");
+var CryptoJS = require("crypto-js");
+const cors = require("cors");
 port = 3080;
 
 // place holder for the data
@@ -9,16 +11,22 @@ const users = [];
 
 const apps = [
   {
-    link: "HomeLoan",
+    name: "HomeLoan",
+    host: "http://localhost:3001",
+    role: ["DPMT_Read", "DPMT_Write"],
   },
   {
-    link: "NetBank",
+    name: "NetBank",
+    host: "http://localhost:3001",
+    role: ["DPMT_Read", "DPMT_Write"],
   },
   {
-    link: "DashBoard",
+    name: "DashBoard",
+    host: "http://localhost:3001",
+    role: ["Admin_Read", "Admin_Write"],
   },
 ];
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "../my-app/build")));
 
@@ -42,6 +50,16 @@ app.listen(port, () => {
   console.log(`Server listening on the port::${port}`);
 });
 
-app.get("/apps", (req, res) => {
-  res.json(apps);
+app.post("/apps", (req, res) => {
+  var bytes = CryptoJS.AES.decrypt(
+    req.body.ciphertext,
+    "SecreyKey_1342523%&##cba"
+  );
+  var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+  var newArray = apps.filter((app) => {
+    return app.role.includes(decryptedData.role);
+  });
+
+  res.json(newArray);
 });
