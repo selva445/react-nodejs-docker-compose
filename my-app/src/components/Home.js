@@ -1,96 +1,34 @@
 import React from "react";
+import { useOktaAuth } from "@okta/okta-react";
 import { Header } from "./Header";
-import { Navbarcomponent } from "./Navbar";
-export default function Home() {
-  return (
-    <div>
-      <Header></Header>
-      <Navbarcomponent />
+import StaffPage from "./StaffPage";
+import { Redirect } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
 
-      <div className="body header">
-        <p className="randomcontent hero-image">
-          Pellentesque habitant morbi tristique senectus et netus et malesuada
-          fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-          ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-          egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-          eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-          Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet,
-          wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum
-          rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
-          turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
-          faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
-          Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
-          facilisis luctus, metus Pellentesque habitant morbi tristique senectus
-          et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
-          feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
-          sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
-          placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
-          pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
-          sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum,
-          eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non
-          enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque
-          id cursus faucibus, tortor neque egestas augue, eu vulputate magna
-          eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis,
-          accumsan porttitor, facilisis luctus, metus Pellentesque habitant
-          morbi tristique senectus et netus et malesuada fames ac turpis
-          egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor
-          sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-          ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet
-          est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum
-          sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget
-          tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus
-          enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.
-          Praesent dapibus, neque id cursus faucibus, tortor neque egestas
-          augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui
-          mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
-          Pellentesque habitant morbi tristique senectus et netus et malesuada
-          fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-          ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-          egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-          eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-          Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet,
-          wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum
-          rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
-          turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
-          faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
-          Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
-          facilisis luctus, metus Pellentesque habitant morbi tristique senectus
-          et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
-          feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
-          sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
-          placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
-          pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
-          sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum,
-          eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non
-          enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque
-          id cursus faucibus, tortor neque egestas augue, eu vulputate magna
-          eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis,
-          accumsan porttitor, facilisis luctus, metus Pellentesque habitant
-          morbi tristique senectus et netus et malesuada fames ac turpis
-          egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor
-          sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-          ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet
-          est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum
-          sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget
-          tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus
-          enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.
-          Praesent dapibus, neque id cursus faucibus, tortor neque egestas
-          augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui
-          mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
-          Pellentesque habitant morbi tristique senectus et netus et malesuada
-          fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-          ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-          egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-          eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-          Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet,
-          wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum
-          rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
-          turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
-          faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
-          Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
-          facilisis luctus, metus
-        </p>
+const Home = () => {
+  const { authState, oktaAuth } = useOktaAuth();
+  const login = () =>
+    oktaAuth.signInWithRedirect({ originalUri: "/StaffPage" });
+
+  if (!authState) {
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
+  } else if (!authState.isAuthenticated) {
+    return (
+      <div>
+        <Header></Header>
+        <div className="loginbg">
+          <button onClick={login} className="loginbutton">
+            Login
+          </button>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  } else {
+    return <Redirect to="/StaffPage" />;
+  }
+};
+export default Home;
